@@ -1,0 +1,2 @@
+PRECIP_HLY, 13 records, 2010-01-01 to 2010-01-05
+NORMAL_MLY, 26 records, 2010-01-01 to 2010-01-05
