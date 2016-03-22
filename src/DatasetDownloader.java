@@ -19,6 +19,7 @@
 
 import java.io.BufferedReader;
 import java.io.BufferedWriter;
+import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -63,7 +64,12 @@ public class DatasetDownloader {
 		int requestsCount = 1; 
 
 		for (String dataset: datasetsToDownload) {
-			int offset = getOffsetFromFile(ignoreOffset);  
+			File file = new File("data/datasets/" + dataset);
+			if (!file.exists())
+			{
+				file.mkdir();
+			}
+			int offset = getOffsetFromFile(dataset, ignoreOffset);  
 			//TODO PROBLEM IF DOWNLOADING MORE THAN ONE DATASET: OFFSET AMBIGUOUS
 			Boolean endOfFile = false;
 
@@ -89,10 +95,10 @@ public class DatasetDownloader {
 					saveSuccessfulPull(dataset, Integer.toString(requestsCount-1), new String(dateRange[0] + " to " + dateRange[1]));
 					break;
 				} else {
-					saveClimateDataToFile(dataBatch.toString(), new String("data/datasets/" + dataset + ".txt"));
+					saveClimateDataToFile(dataBatch.toString(), new String("data/datasets/" + dataset + "/" + dataset + ".txt"));
 					requestsCount++;			
 					offset+=1000;
-					saveOffsetToFile(offset);
+					saveOffsetToFile(dataset, offset);
 				}
 
 
@@ -124,19 +130,19 @@ public class DatasetDownloader {
 	 * @return
 	 * @throws IOException
 	 */
-	private static int getOffsetFromFile(boolean ignoreOffset) throws IOException {
+	private static int getOffsetFromFile(String dataset, boolean ignoreOffset) throws IOException {
 		if (ignoreOffset) {
-			saveOffsetToFile(1);
+			saveOffsetToFile(dataset, 1);
 			return 1; 
 		}
 		
 		try {
-			bufferedReader = new BufferedReader(new FileReader("data/offset.txt"));
+			bufferedReader = new BufferedReader(new FileReader("data/datasets/" + dataset + "/offset.txt"));
 			int offset = Integer.parseInt(bufferedReader.readLine());
 			return offset;
 
 		} catch (FileNotFoundException e) {
-			saveOffsetToFile(1);
+			saveOffsetToFile(dataset, 1);
 			return 1; 
 		}		
 	}
@@ -148,8 +154,8 @@ public class DatasetDownloader {
 	 * @param i
 	 * @throws IOException
 	 */
-	private static void saveOffsetToFile(int i) throws IOException {
-		saveToFile("data/offset.txt", Integer.toString(i), false);
+	private static void saveOffsetToFile(String dataset, int i) throws IOException {
+		saveToFile("data/datasets/" + dataset + "/offset.txt", Integer.toString(i), false);
 	}
 
 	private static void saveLog(String string) throws IOException {
@@ -174,7 +180,7 @@ public class DatasetDownloader {
 	}
 
 	private static void saveToFile(String filePath, String fileData, Boolean append) throws IOException {
-		Writer writer = new BufferedWriter(new FileWriter(filePath, append));//, append));
+		Writer writer = new BufferedWriter(new FileWriter(filePath, append));
 		PrintWriter out = new PrintWriter(writer);
 		try {
 			out.print(fileData);           

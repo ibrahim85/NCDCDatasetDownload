@@ -39,3 +39,88 @@ Dataset being downloaded: NORMAL_MLY.
 25 requests
 26 requests
 27 requestsEnd ofNORMAL_MLYdataset. 
+
+
+2016/03/21 23:18:14
+
+*
+Dataset being downloaded: PRECIP_HLY.
+1 requests
+2 requests
+3 requests
+4 requests
+5 requests
+6 requests
+7 requests
+8 requests
+9 requests
+10 requests
+
+
+2016/03/21 23:18:40
+
+*
+Dataset being downloaded: PRECIP_HLY.
+1 requests
+2 requests
+3 requests
+4 requests
+5 requests
+6 requests
+7 requests
+8 requests
+9 requests
+10 requestsEnd ofPRECIP_HLYdataset. 
+
+
+2016/03/21 23:18:55
+
+*
+Dataset being downloaded: NORMAL_MLY.
+10 requests
+11 requests
+12 requests
+13 requests
+14 requests
+15 requests
+16 requests
+17 requests
+18 requests
+19 requestsEnd ofNORMAL_MLYdataset. 
+
+
+2016/03/21 23:19:27
+
+*
+Dataset being downloaded: PRECIP_HLY.
+1 requestsEnd ofPRECIP_HLYdataset. 
+
+
+2016/03/21 23:19:29
+
+*
+Dataset being downloaded: NORMAL_MLY.
+1 requestsEnd ofNORMAL_MLYdataset. 
+
+
+2016/03/21 23:19:45
+
+*
+Dataset being downloaded: PRECIP_HLY.
+1 requestsEnd ofPRECIP_HLYdataset. 
+
+
+2016/03/21 23:19:47
+
+*
+Dataset being downloaded: NORMAL_MLY.
+1 requests
+2 requests
+3 requests
+4 requests
+5 requests
+6 requests
+7 requests
+8 requests
+9 requests
+10 requestsEnd ofNORMAL_MLYdataset. 
